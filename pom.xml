@@ -6,7 +6,7 @@
     <groupId>com.zam</groupId>
     <artifactId>blind-santa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>blind-santa</name>
     <description>Demo project for Spring Boot</description>
