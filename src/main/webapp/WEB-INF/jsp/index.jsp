@@ -1,79 +1,110 @@
 <!DOCTYPE html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
 
     <!-- Access the bootstrap Css like this,
         Spring boot will handle the resource mapping automcatically -->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
-    <!--
 	<spring:url value="/css/main.css" var="springCss" />
 	<link href="${springCss}" rel="stylesheet" />
-	 -->
-    <c:url value="/css/main.css" var="jstlCss" />
-    <link href="${jstlCss}" rel="stylesheet" />
+    <c:url value="/css/main.css" var="jstlCss"/>
+    <link href="${jstlCss}" rel="stylesheet"/>
 
 </head>
 <body>
 
-<%--<nav class="navbar navbar-inverse">--%>
-    <%--<div class="container">--%>
-        <%--<div class="navbar-header">--%>
-            <%--<a class="navbar-brand" href="#">Spring Boot</a>--%>
-        <%--</div>--%>
-        <%--<div id="navbar" class="collapse navbar-collapse">--%>
-            <%--<ul class="nav navbar-nav">--%>
-                <%--<li class="active"><a href="#">Home</a></li>--%>
-                <%--<li><a href="#about">About</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</nav>--%>
-
 <div class="container">
 
     <div class="starter-template">
-        <h1>Welcome to Blind Santa</h1>
-        <h2>Enter following data and send invites by clicking one button</h2>
+        <h1 align="center">Welcome to Blind Santa</h1>
+        <h2 align="center">Enter following data and send invites by clicking one button</h2>
     </div>
 
 </div>
 
 <div class="container">
-    <div class="row">
-        Enter your party date
-    </div>
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
+    <form name="party" method="post" action="/createParty" novalidate="novalidate">
+
+        <div class="row">
+            <label for="date">Enter your party date</label>
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='partyDate'>
+                            <input type='text' class="form-control" id="date" required="required" name="date"/>
+                            <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
+                        </div>
+                    </div>
                 </div>
+                <script type="text/javascript">
+                    moment.updateLocale('en', {
+                        week: { dow: 1 } // Monday is the first day of the week
+                    });
+                    $(function () {
+                        $('#partyDate').datetimepicker({
+                            format: 'DD-MM-YYYY HH:mm'
+//                            format: 'dd MM yyyy - hh:ii'
+                        });
+                    });
+                </script>
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker2').datetimepicker({
-                    locale: 'ru'
-                });
-            });
-        </script>
-    </div>
-    <div class="row">
-        Enter party place
-    </div>
-    <div class="row">
-        Enter average amount
-    </div>
 
+        <div class="row">
+            <label for="location">Enter party place</label>
+            <input type="text" class="form-control" required="required" id="location" name="location">
+        </div>
 
+        <div class="row">
+            <label for="amount">Enter average amount</label>
+            <input type="number" class="form-control" id="amount" name="amount">
+        </div>
+
+        <div class="container">
+            <label for="participants">Add you friends</label>
+            <table class="table table-hover" id="participants">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="participant-name form-control" required="required" id="participantName" name="participantName">
+                    </td>
+                    <td>
+                        <input type="text" class="participant-name form-control" required="required" id="participantEmail" name="participantEmail">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <input type="button" id="addParticipant" value="Add participant" >
+        </div>
+
+        <div class="form-group">
+            <label for="message">Your message</label>
+            <textarea class="form-control" rows="5" id="message" name="message"></textarea>
+        </div>
+
+        <input type="submit" value="Create your party!" class="btn btn-default">
+
+    </form>
 </div>
-
 
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
