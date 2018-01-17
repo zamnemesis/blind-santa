@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
@@ -93,7 +95,23 @@
         </div>
 
         <div class="form-group">
-            <input type="button" id="addParticipant" value="Add participant" >
+            <input type="button" id="addParticipant" value="Add participant" class="btn btn-default">
+            <script type="text/javascript">
+                $("#addParticipant").click(function () {
+                    $("#participants").each(function () {
+                        var tds = '<tr>';
+                        jQuery.each($('tr:last td', this), function () {
+                            tds += '<td>' + $(this).html() + '</td>';
+                        });
+                        tds += '</tr>';
+                        if ($('tbody', this).length > 0) {
+                            $('tbody', this).append(tds);
+                        } else {
+                            $(this).append(tds);
+                        }
+                    });
+                });
+            </script>
         </div>
 
         <div class="form-group">
@@ -105,8 +123,6 @@
 
     </form>
 </div>
-
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
