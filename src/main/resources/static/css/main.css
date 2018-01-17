@@ -5,3 +5,9 @@ h1{
 h2{
     color:#FF0000;
 }
+
+.delete-button{
+    background: url(/image/btn.png) no-repeat;
+    cursor:pointer;
+    border: none;
+}

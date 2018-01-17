@@ -78,16 +78,25 @@
                 <tr>
                     <th>Name</th>
                     <th>E-mail</th>
+                    <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="participant-name form-control" required="required" id="participantName" name="participantName">
+                        <input type="text" class="participant-name form-control" required="required" id="participantName" name="participantName"/>
                     </td>
                     <td>
-                        <input type="text" class="participant-name form-control" required="required" id="participantEmail" name="participantEmail">
+                        <input type="text" class="participant-name form-control" required="required" id="participantEmail" name="participantEmail"/>
+                    </td>
+                    <td>
+                        <input type="button" id="deleteParticipant" class="btn btn-labeled btn-danger">
+                        <span class="btn-label">
+                            <i class="glyphicon glyphicon-remove">
+                            Remove
+                            </i>
+                        </span>
                     </td>
                 </tr>
                 </tbody>
