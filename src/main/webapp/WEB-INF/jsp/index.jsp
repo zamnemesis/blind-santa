@@ -12,10 +12,11 @@
     <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
-	<spring:url value="/css/main.css" var="springCss" />
-	<link href="${springCss}" rel="stylesheet" />
+    <spring:url value="/css/main.css" var="springCss"/>
+    <link href="${springCss}" rel="stylesheet"/>
     <c:url value="/css/main.css" var="jstlCss"/>
     <link href="${jstlCss}" rel="stylesheet"/>
 
@@ -49,7 +50,7 @@
                 </div>
                 <script type="text/javascript">
                     moment.updateLocale('en', {
-                        week: { dow: 1 } // Monday is the first day of the week
+                        week: {dow: 1} // Monday is the first day of the week
                     });
                     $(function () {
                         $('#partyDate').datetimepicker({
@@ -85,18 +86,18 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="participant-name form-control" required="required" id="participantName" name="participantName"/>
+                        <input type="text" class="participant-name form-control" required="required"
+                               id="participantName" name="participantName" minlength="1"/>
                     </td>
                     <td>
-                        <input type="text" class="participant-name form-control" required="required" id="participantEmail" name="participantEmail"/>
+                        <input type="text" class="participant-name form-control" required="required"
+                               id="participantEmail" name="participantEmail"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
                     </td>
                     <td>
-                        <input type="button" id="deleteParticipant" class="btn btn-labeled btn-danger">
-                        <span class="btn-label">
-                            <i class="glyphicon glyphicon-remove">
-                            Remove
-                            </i>
-                        </span>
+                        <div>
+                            <input type="button" class="btn btn-danger glyphicon glyphicon-remove" id="deleteParticipant" value="Remove"/>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
