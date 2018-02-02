@@ -74,7 +74,7 @@
 
         <div class="container">
             <label for="participants">Add you friends</label>
-            <table class="table table-hover" id="participants">
+            <table class="table table-hover" id="participants" name="participants">
                 <thead>
                 <tr>
                     <th>Name</th>
