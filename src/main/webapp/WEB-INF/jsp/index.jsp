@@ -33,7 +33,7 @@
 </div>
 
 <div class="container">
-    <form name="party" method="post" action="/createParty" novalidate="novalidate">
+    <form name="party" method="post" action="/createParty" novalidate>
 
         <div class="row">
             <label for="date">Enter your party date</label>
@@ -41,7 +41,9 @@
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='partyDate'>
-                            <input type='text' class="form-control" id="date" required="required" name="date"/>
+                            <input type='text' class="form-control" id="date"
+                           <%-- required="required" --%>
+                            name="date"/>
                             <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -55,7 +57,6 @@
                     $(function () {
                         $('#partyDate').datetimepicker({
                             format: 'DD-MM-YYYY HH:mm'
-//                            format: 'dd MM yyyy - hh:ii'
                         });
                     });
                 </script>
@@ -64,7 +65,9 @@
 
         <div class="row">
             <label for="location">Enter party place</label>
-            <input type="text" class="form-control" required="required" id="location" name="location">
+            <input type="text" class="form-control"
+            <%--required="required" --%>
+            id="location" name="location">
         </div>
 
         <div class="row">
@@ -86,13 +89,15 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="participant-name form-control" required="required"
+                        <input type="text" class="participant-name form-control"
+                        <%--required="required"--%>
                                id="participantName" name="participantName" minlength="1"/>
                     </td>
                     <td>
                         <input type="text" class="participant-name form-control" required="required"
                                id="participantEmail" name="participantEmail"
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+                         <%--      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" --%>
+                               />
                     </td>
                     <td>
                         <div>

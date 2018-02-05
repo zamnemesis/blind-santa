@@ -1,22 +1,25 @@
 package com.zam.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class Party {
-    private Date date;
+    @DateTimeFormat(pattern="dd-MM-yyyy hh:mm")
+    private LocalDate date;
     private String location;
     private Integer amount;
-//    private List<Participant> participants;
+    private List<Participant> participants;
     private String message;
 
-    public Date getPartyDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setPartyDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -36,13 +39,13 @@ public class Party {
         this.amount = amount;
     }
 
-//    public List<Participant> getParticipants() {
-//        return participants;
-//    }
-//
-//    public void setParticipants(List<Participant> participants) {
-//        this.participants = participants;
-//    }
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Participant> participants) {
+        this.participants = participants;
+    }
 
     public String getMessage() {
         return message;
@@ -58,7 +61,7 @@ public class Party {
                 .append("date", date)
                 .append("location", location)
                 .append("amount", amount)
-//                .append("participants", participants)
+                .append("participants", participants)
                 .append("message", message)
                 .toString();
     }
